@@ -1,0 +1,11 @@
+  //save(S) insert 自動採番のPKのみ対応
+  //saveAll(Iterable<S>)insert 自動採番のPKのみ対応
+  //findById(ID)
+  //existsById(ID)
+  //findAll()
+  //findAllById(Iterable<ID>)
+  //count()
+  //deleteById(ID)
+  //delete(T)
+  //deleteAll(Iterable<? extends T>)
+  //deleteAll()

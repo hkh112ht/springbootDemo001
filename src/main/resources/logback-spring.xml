@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <!-- デフォルト設定読み込み -->
+    <include
+        resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <!--設定開発用 -->
+    <springProfile name="dev">
+        <!--出力ルール～コンソール～ -->
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <target>System.out</target>
+            <encoder>
+           <!--  ·出力内容 -->
+                <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+            </encoder>
+        </appender>
+<!--
+        出力ルール～WEB～
+        <appender name="FILE_WEB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>ログファイル名</file>
+            <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>自動生成ファイル名パターン</fileNamePattern>
+                <maxHistory>ログファイルの寿命</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>出力内容</pattern>
+            </encoder>
+        </appender>
+        出力ルール～バッチ～
+        <appender name="FILE_BATCH"
+            class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>ログファイル名</file>
+            <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>自動生成ファイル名パターン</fileNamePattern>
+                <maxHistory>ログファイルの寿命</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>出力内容</pattern>
+            </encoder>
+        </appender>
+         -->
+    </springProfile>
+
+    <!--設定本番用 -->
+<!--
+     <springProfile name="prd">
+        ...
+    </springProfile>
+ -->
+    <!-- //共通のフォーマット定義 -->
+    <property name="FORMAT"
+        value="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n" />
+    <!-- //共通の出力先ベース定義 -->
+    <property name="LOG_DIR" value="logs" />
+    <!-- //共通のファイル名定義 -->
+    <property name="FILNE_NAME" value="account-service.log" />
+
+    <!-- //profileがlocalの場合 -->
+    <!-- <springProfile name="local"> <include resource="logback/local-layout.xml"
+        /> </springProfile> -->
+    <!-- //profileがstagingの場合 -->
+    <!-- <springProfile name="staging"> <include resource="logback/staging-layout.xml"
+        /> </springProfile> -->
+
+    <!-- //profileがproductionの場合 -->
+    <!-- <springProfile name="production"> <include resource="logback/production-layout.xml"
+        /> </springProfile> -->
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
